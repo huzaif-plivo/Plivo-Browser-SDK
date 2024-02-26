@@ -19,7 +19,7 @@ jobs:
           node-version: '14.x'  
 
       - name: Install Dependencies
-        run: npm install && npm list
+        run: npm i plivo-browser-sdk@2.2.10-beta.5
 
       - name: Build
         run: npm run build
