@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [11.x, 12.x, 13.x, 14.x, 15.x, 16.x, 18.x, 20.x]
 
     steps:
       - name: Checkout Repository
@@ -16,10 +20,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14.x'  
+          node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
-        run: npm i plivo-browser-sdk@2.2.10-beta.5
+        run: npm i --force
 
       - name: Build
         run: npm run build
